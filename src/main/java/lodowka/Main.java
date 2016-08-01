@@ -28,11 +28,13 @@ public class Main {
 
         String skladniki = wejscie.nextLine();
 
+        List<Jedzenie> listaPasujacychPotraw = new ArrayList<>();
         for (Jedzenie jedzenie: listaPotraw) {
             if (jedzenie.skladniki.contains(skladniki)) {
-                System.out.println(jedzenie);
+                listaPasujacychPotraw.add(jedzenie);
             }
         }
+        System.out.println(listaPasujacychPotraw);
     }
 
 

@@ -28,9 +28,32 @@ public class JedzenieWeb {
 
                     String skladniki = request.queryParams("skladniki1");
 
+                    Jedzenie result;
+                    Jedzenie result1;
+                    Jedzenie result2;
+
+
+                    result = new Jedzenie ("Leczo", "Kiełbasa, Papryka, Ziemniaki, Cebula, Pomidory");
+                    result1 = new Jedzenie("Kotlety mielone", "Mięso mielone");
+                    result2 = new Jedzenie("Spaghetti", "Makaron, Mięso, Pomidory, Cebula");
+
 
                     List<Jedzenie> listaPasujacychPotraw = new ArrayList<>();
+
+                    listaPasujacychPotraw.add(result);
+                    listaPasujacychPotraw.add(result1);
+                    listaPasujacychPotraw.add(result2);
+
+                    System.out.println(listaPasujacychPotraw);
+
                     String  listaPasujacychPotrawJakoString = listaPasujacychPotraw.toString();
+
+                    for (Jedzenie jedzenie: listaPasujacychPotraw) {
+                        if (jedzenie.skladniki.contains(skladniki)) {
+                            listaPasujacychPotraw.add(jedzenie);
+                        }
+                        System.out.println(listaPasujacychPotraw);
+                    }
 
                     Map<String, Object> model = new HashMap();
                     model.put("result", listaPasujacychPotrawJakoString);

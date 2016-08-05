@@ -6,7 +6,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public interface Przepisy {
+    }
+
+    public static void main(String[] args) throws Exception {
         Jedzenie posiłek1;
         Jedzenie posiłek2;
         Jedzenie posiłek3;
@@ -29,11 +32,17 @@ public class Main {
         String skladniki = wejscie.nextLine();
 
         List<Jedzenie> listaPasujacychPotraw = new ArrayList<>();
-        for (Jedzenie jedzenie: listaPotraw) {
+        for (Jedzenie jedzenie : listaPotraw) {
             if (jedzenie.skladniki.contains(skladniki)) {
                 listaPasujacychPotraw.add(jedzenie);
             }
         }
+        if (listaPasujacychPotraw.size() == 0) {
+
+            throw new BrakPasujacychPotrawException();
+        }
+
+
         System.out.println(listaPasujacychPotraw);
     }
 

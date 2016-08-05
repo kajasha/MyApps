@@ -26,7 +26,9 @@ public class JedzenieWeb {
                 (request, response) -> {
                     // Początek kodu strony
 
-                    String skladniki = request.queryParams("skladniki1");
+                    String skladniki = request.queryParams("skladniki");
+
+                    String skladniki1 = skladniki.toString();
 
                     Jedzenie result;
                     Jedzenie result1;
@@ -46,7 +48,12 @@ public class JedzenieWeb {
 
                     System.out.println(listaPasujacychPotraw);
 
+
+
                     String  listaPasujacychPotrawJakoString = listaPasujacychPotraw.toString();
+
+
+
 
                     for (Jedzenie jedzenie: listaPasujacychPotraw) {
                         if (jedzenie.skladniki.contains(skladniki)) {
@@ -56,7 +63,7 @@ public class JedzenieWeb {
                     }
 
                     Map<String, Object> model = new HashMap();
-                    model.put("result", listaPasujacychPotrawJakoString);
+                    model.put("result", listaPasujacychPotraw.toString());
 
                     return new ModelAndView(model, "lista_pasujacych_potraw.ftl");
                     // Koniec kodu strony
